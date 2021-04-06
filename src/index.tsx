@@ -39,9 +39,9 @@ const App = () => {
       write: false,
       plugins: [unpkgPathPlugin()],
       define: {
-        'process.env.NOCE_ENV': '"production"',
-        global: 'window'
-      }
+        "process.env.NODE_ENV": '"production"',
+        global: "window",
+      },
     });
     setCode(result.outputFiles[0].text);
   };
