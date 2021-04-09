@@ -3,6 +3,7 @@ import * as esbuild from "esbuild-wasm";
 import { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 
+import CodeEditor from './components/code-editor';
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
 import { fetchPlugin } from "./plugins/fetch-plugin";
 
@@ -10,7 +11,7 @@ const App = () => {
   const ref = useRef<any>();
   const iframe = useRef<any>();
   const [input, setInput] = useState("");
-  const [code, setCode] = useState("");
+  //const [code, setCode] = useState("");
 
   const startService = async () => {
     ref.current = await esbuild.startService({
@@ -31,7 +32,7 @@ const App = () => {
     if (!ref.current) {
       return;
     }
-    
+
     iframe.current.srcdoc = html;
 
     const result = await ref.current.build({
@@ -70,11 +71,11 @@ const App = () => {
   return (
     <div>
       <textarea value={input} onChange={(e) => setInput(e.target.value)}></textarea>
+      <CodeEditor />
       <div>
         <button onClick={onClick}>Submit</button>
       </div>
-      <pre>{code}</pre>
-      <iframe ref={iframe} sandbox="allow-scripts" srcDoc={html} />
+      <iframe ref={iframe} title="preview" sandbox="allow-scripts" srcDoc={html} />
     </div>
   );
 };
