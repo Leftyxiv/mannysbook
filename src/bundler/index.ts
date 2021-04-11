@@ -5,7 +5,7 @@ import { fetchPlugin } from "../plugins/fetch-plugin";
 
 let service: esbuild.Service;
 
-export default async (rawCode: string) => {
+const bundle = async (rawCode: string) => {
   if (!service) {
     service = await esbuild.startService({
       worker: true,
@@ -24,3 +24,5 @@ export default async (rawCode: string) => {
   });
   return result.outputFiles[0].text;
 };
+
+export default bundle;
