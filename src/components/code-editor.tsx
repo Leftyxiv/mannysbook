@@ -1,5 +1,5 @@
 import "./code-editor.css";
-import './syntax.css'
+import "./syntax.css";
 import { useRef } from "react";
 import MonacoEditor, { EditorDidMount } from "@monaco-editor/react";
 import prettier from "prettier";
@@ -30,10 +30,10 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
       monacoEditor,
     );
     highlighter.highLightOnDidChangeModelContent(
-      ()=>{},
-      ()=>{},
+      () => {},
+      () => {},
       undefined,
-      ()=>{},
+      () => {},
     );
   };
 
@@ -62,7 +62,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
         value={initialValue}
         theme="dark"
         language="javascript"
-        height="300px"
+        height="100%"
         options={{
           wordWrap: "on",
           minimap: { enabled: false },
