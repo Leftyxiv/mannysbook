@@ -1,14 +1,14 @@
-import { Cell } from './../cell';
-import { Action } from './../actions/index';
-import { ActionType } from './../action-types/index';
+import { Cell } from "./../cell";
+import { Action } from "./../actions/index";
+import { ActionType } from "./../action-types/index";
 
 interface CellsState {
   loading: boolean;
   error: string | null;
   order: string[];
   data: {
-    [key: string]: Cell
-  }
+    [key: string]: Cell;
+  };
 }
 
 const initialState: CellsState = {
@@ -16,21 +16,27 @@ const initialState: CellsState = {
   error: null,
   order: [],
   data: {},
-}
+};
 
 const reducer = (state: CellsState = initialState, action: Action): CellsState => {
   switch (action.type) {
     case ActionType.UPDATE_CELL:
-      return state;
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.payload.id]: { ...state.data[action.payload.id], content: action.payload.content },
+        },
+      };
     case ActionType.DELETE_CELL:
       return state;
     case ActionType.MOVE_CELL:
-      return state
+      return state;
     case ActionType.INSERT_CELL_BEFORE:
-      return state
+      return state;
     default:
-      return state
+      return state;
   }
-}
+};
 
 export default reducer;
