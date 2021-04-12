@@ -1,9 +1,9 @@
 import React from 'react'
 
-const CellListItem = () => {
+const CellListItem: React.FC = () => {
   return (
     <div>
-      cell list ite,
+      cell list item
     </div>
   )
 }
