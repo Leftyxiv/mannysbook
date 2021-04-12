@@ -1,4 +1,4 @@
-import produce from 'immer';
+import produce from "immer";
 import { Cell } from "./../cell";
 import { Action } from "./../actions/index";
 import { ActionType } from "./../action-types/index";
@@ -24,9 +24,11 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
     case ActionType.UPDATE_CELL:
       const { id, content } = action.payload;
       state.data[id].content = content;
-    return;
+      return;
     case ActionType.DELETE_CELL:
-      return state;
+      delete state.data[action.payload];
+      state.order = state.order.filter((id) => id !== action.payload);
+      return;
     case ActionType.MOVE_CELL:
       return state;
     case ActionType.INSERT_CELL_BEFORE:
