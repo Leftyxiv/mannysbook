@@ -31,4 +31,3 @@ store.dispatch({
   payload: { id: null, type: "text" },
 });
 
-console.log(store.getState());
