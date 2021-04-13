@@ -1,4 +1,4 @@
-import { Action, UpdateCellAction, DeleteCellAction, MoveCellAction, InsertCellAfterAction } from './../actions/index';
+import { UpdateCellAction, DeleteCellAction, MoveCellAction, InsertCellAfterAction } from './../actions/index';
 import { ActionType } from './../action-types/index';
 import { CellTypes, cellDirection } from '../cell';
 
