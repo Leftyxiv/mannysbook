@@ -1,3 +1,4 @@
+import './cell-list-item.css'
 import React from 'react'
 import { Cell } from '../state';
 
@@ -16,7 +17,7 @@ const CellListItem: React.FC<CellListItemProps> = ({ cell }) => {
     child = <TextEditor cell={cell} />
   }
   return (
-    <div>
+    <div className='cell-list-item'>
       <ActionBar id={cell.id}/>
       { child }
     </div>
