@@ -36,10 +36,12 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
         <Resizable direction="horizontal">
           <CodeEditor onChange={(value) => updateCell(cell.id, value)} initialValue={cell.content} />
         </Resizable>
-        {!bundle || bundle.loading ? <div className='progress-cover'>
-          <progress className='progress is-info' max='100'>
-            Loading
-          </progress>
+        {!bundle || bundle.loading ? <div className='progress-wrapper'>
+          <div className='progress-cover'>
+            <progress className='progress is-info' max='100'>
+              Loading
+            </progress>
+          </div>
         </div> : <Preview code={bundle.code} err={bundle.err} />}
       </div>
     </Resizable>
