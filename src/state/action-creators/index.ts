@@ -5,8 +5,6 @@ import {
   DeleteCellAction,
   MoveCellAction,
   InsertCellAfterAction,
-  BundleStartAction,
-  BundleCompleteAction,
 } from "./../actions/index";
 import { ActionType } from "./../action-types/index";
 import { CellTypes, cellDirection } from "../cell";

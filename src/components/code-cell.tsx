@@ -5,25 +5,24 @@ import CodeEditor from "./code-editor";
 import Resizable from "./resizable";
 import { Cell } from "../state";
 import { useActions } from "../hooks/use-actions";
-import { useTypedSelector } from '../hooks/use-typed-selector';
+import { useTypedSelector } from "../hooks/use-typed-selector";
 
 interface CodeCellProps {
   cell: Cell;
 }
 
 const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
-
   const { updateCell, createBundle } = useActions();
-  const bundle = useTypedSelector((state) => state.bundles[cell.id])
+  const bundle = useTypedSelector((state) => state.bundles[cell.id]);
   useEffect(() => {
     const timer = setTimeout(async () => {
-      createBundle(cell.id, cell.content)
+      createBundle(cell.id, cell.content);
     }, 1000);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [cell.content, cell.id]);
+  }, [cell.content, cell.id, createBundle]);
 
   return (
     <Resizable direction="vertical">
