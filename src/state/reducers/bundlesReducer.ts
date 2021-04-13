@@ -8,7 +8,7 @@ interface BundlesState {
     loading: boolean;
     code: string;
     err: string;
-  }
+  } | undefined;
 }
 
 const initialState: BundlesState = {}
