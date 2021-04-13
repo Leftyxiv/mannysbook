@@ -32,6 +32,6 @@ const reducer = produce((state: BundlesState = initialState, action: Action):Bun
     default:
       return state
   }
-})
+}, initialState)
 
 export default reducer;
