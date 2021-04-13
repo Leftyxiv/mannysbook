@@ -15,7 +15,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
   const { updateCell, createBundle } = useActions();
   const bundle = useTypedSelector((state) => state.bundles[cell.id]);
   useEffect(() => {
-    if (!bundle){
+    if (!bundle) {
       createBundle(cell.id, cell.content);
       return;
     }
@@ -26,6 +26,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
     return () => {
       clearTimeout(timer);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cell.content, cell.id, createBundle]);
 
   return (
@@ -34,7 +35,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
         <Resizable direction="horizontal">
           <CodeEditor onChange={(value) => updateCell(cell.id, value)} initialValue={cell.content} />
         </Resizable>
-        {bundle && <Preview code={bundle.code} err={bundle.err} />}
+        {!bundle || bundle.loading ? <div>Loading...</div> : <Preview code={bundle.code} err={bundle.err} />}
       </div>
     </Resizable>
   );
