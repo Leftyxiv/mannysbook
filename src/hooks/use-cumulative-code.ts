@@ -35,6 +35,6 @@ export const useCumulativeCode = (id: string) => {
         break;
       }
     }
-    return cumulativeCode;
-  });
+    return cumulativeCode  
+  }).join('\n');
 }
