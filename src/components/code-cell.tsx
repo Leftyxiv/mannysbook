@@ -26,7 +26,6 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
     const timer = setTimeout(async () => {
       createBundle(cell.id, cumulativeCode);
     }, 1000);
-
     return () => {
       clearTimeout(timer);
     };
